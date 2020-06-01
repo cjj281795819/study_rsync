@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { uploadFile, getSign, uploadPart, merge } from './server';
+import webworkContent from './webwork';
 
 let createURL = null;
 let worker = null;
@@ -16,7 +17,7 @@ const App = () => {
   const fileRef = useRef(null);
 
   const newWorker = () => {
-    const textContent = document.getElementById('worker').textContent;
+    const textContent = webworkContent();
     const blob = new Blob([textContent]);
     createURL = window.URL.createObjectURL(blob);
     worker = new Worker(createURL);
